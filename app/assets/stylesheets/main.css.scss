@@ -1,0 +1,147 @@
+// Yale Dancers Stylesheet
+// By Paul Fletcher-Hill
+
+// Mixins
+@import "mixins";
+
+// Variables
+$nav-width: 100px;
+$nav-width-expanded: 300px;
+$background-color: #eee;
+$purple: #6600CC;
+
+// Style
+body {
+  margin: 0;
+  padding: 0;
+  @include G-Regular;
+  background: $background-color;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $nav-width;
+  height: 100%;
+  background: white;
+  @include transition(0.1s);
+  
+  &.open {
+    width: $nav-width-expanded;
+    
+    .adjustable-nav {
+      left: $nav-width-expanded;
+      
+      .open-nav-links {
+        background: #fafafa;
+      }
+    }
+    
+    .collapsible-nav {
+      left: 0;
+    }
+  }
+  
+  .adjustable-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include transition(0.15s);
+    background: white;
+  }
+  
+  .logo,
+  .open-nav-links {
+    @include transition(0.15s);
+  }
+  
+  .logo {
+    @include G-XLight;
+    @include calc(font-size, "#{$nav-width}/2.3");
+    box-sizing: border-box;
+    border-bottom: 2px solid $background-color;
+    text-decoration: none;
+    width: $nav-width;
+    height: $nav-width;
+    line-height: $nav-width;
+    display: block;
+    text-align: center;
+    color: #333;
+    
+    &:hover {
+      color: $purple;
+      background: #fafafa;
+    }
+  }
+
+  .open-nav-links {
+    width: $nav-width;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    @include calc(font-size, "#{$nav-width}/2.3");
+    color: #ccc;
+    
+    &:hover {
+      color: #777;
+    }
+  }
+  
+  .collapsible-nav {
+    position: absolute;
+    top: 0;
+    left: -$nav-width-expanded;
+    @include transition(0.2s);
+    width: $nav-width-expanded;
+  }
+  
+  .nav-links,
+  .nav-footer {
+    padding: 20px;
+  }
+  
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    box-sizing: border-box;
+    
+    li {
+      font-size: 20px;
+      padding: 15px 0;
+      border-bottom: 1px solid #dadada;
+      color: #555;
+      
+      &:hover {
+        color: $purple;
+      }
+    }
+    
+    a {
+      @include calc(font-size, "#{$nav-width}/3");
+      text-decoration: none;
+    }
+  }
+  
+  .nav-footer {
+    @include G-Light;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .nav-social {
+    margin-top: 20px;
+    font-size: 20px;
+    
+    a {
+      margin-right: 5px;
+      color: #555;
+      text-decoration: none;
+      
+      &:hover {
+        color: $purple;
+      }
+    }
+  }
+}
