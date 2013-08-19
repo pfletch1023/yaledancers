@@ -18,9 +18,12 @@ module YaleDancers
       ENV['AWS_ACCESS_KEY_ID'] = credentials['AWS_ACCESS_KEY_ID']
       ENV['AWS_SECRET_ACCESS_KEY'] = credentials['AWS_SECRET_ACCESS_KEY']
       ENV['S3_BUCKET_NAME'] = credentials['S3_BUCKET_NAME']
-      FlickRaw.api_key = credentials['FLICKR_API_KEY']
-      FlickRaw.shared_secret = credentials['FLICKR_SECRET']
+      ENV['FLICKR_API_KEY'] = credentials['FLICKR_API_KEY']
+      ENV['FLICKR_SECRET'] = credentials['FLICKR_SECRET']
       ENV['FLICKR_USER_ID'] = credentials['FLICKR_USER_ID']
     end
+    
+    FlickRaw.api_key = ENV['FLICKR_API_KEY']
+    FlickRaw.shared_secret = ENV['FLICKR_SECRET']
   end
 end
