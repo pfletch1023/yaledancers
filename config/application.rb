@@ -9,6 +9,9 @@ Bundler.require(:default, Rails.env)
 module YaleDancers
   class Application < Rails::Application
     
+    # Include modules
+    config.autoload_paths += %W(#{config.root}/lib/yale_dancers)
+    
     # Load credentials file
     unless Rails.env.production?
       credentials = YAML.load_file("#{Rails.root}/config/credentials.yml")
@@ -19,8 +22,5 @@ module YaleDancers
       FlickRaw.shared_secret = credentials['FLICKR_SECRET']
       ENV['FLICKR_USER_ID'] = credentials['FLICKR_USER_ID']
     end
-    
-    # Include modules
-    config.autoload_paths += %W(#{config.root}/lib/yale_dancers)
   end
 end
