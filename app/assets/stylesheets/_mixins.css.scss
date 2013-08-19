@@ -1,8 +1,8 @@
 //Fonts
-@font-face { font-family: Gotham-Bold; src: url('/assets/Gotham-Bold.otf'); }
-@font-face { font-family: Gotham-Book; src: url('/assets/Gotham-Book.otf'); } 
-@font-face { font-family: Gotham-Light; src: url('/assets/Gotham-Light.otf'); } 
-@font-face { font-family: Gotham-XLight; src: url('/assets/Gotham-XLight.otf'); } 
+@font-face { font-family: Gotham-Bold; src: asset-url('/assets/Gotham-Bold.otf', font); }
+@font-face { font-family: Gotham-Book; src: asset-url('/assets/Gotham-Book.otf', font); } 
+@font-face { font-family: Gotham-Light; src: asset-url('/assets/Gotham-Light.otf', font); } 
+@font-face { font-family: Gotham-XLight; src: asset-url('/assets/Gotham-XLight.otf', font); } 
 
 @mixin G-Bold {
   font-family: Gotham-Bold, Helvetica, Arial, "Lucida Grande", sans-serif;
