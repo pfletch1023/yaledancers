@@ -10,7 +10,7 @@ module YaleDancers
   class Application < Rails::Application
     
     # Include modules
-    config.autoload_paths += %W(#{config.root}/lib/yale_dancers)
+    config.autoload_paths += %W(#{config.root}/lib)
     
     # Load credentials file
     unless Rails.env.production?
