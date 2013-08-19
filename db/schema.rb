@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130804234659) do
+ActiveRecord::Schema.define(version: 20130817175609) do
 
   create_table "assets", force: true do |t|
     t.string   "name"
@@ -26,6 +26,25 @@ ActiveRecord::Schema.define(version: 20130804234659) do
     t.string   "college"
     t.integer  "year"
     t.text     "bio"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "performances", force: true do |t|
+    t.integer  "show_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
+  end
+
+  create_table "shows", force: true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "student_price"
+    t.string   "non_student_price"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"

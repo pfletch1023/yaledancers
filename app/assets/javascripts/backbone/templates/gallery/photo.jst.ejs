@@ -1,0 +1,26 @@
+<div class="popover-photo">
+  <div class="top-menu">
+    <div class="pull-right">
+      <span class="close-popover">X</span>
+    </div>
+  </div>
+  
+  <div class="medium-photo">
+    <img src="<%= url_s %>"/>
+  </div>
+  
+  <div class="large-photo" style="display: none">
+    <img src="<%= url_o %>"/>
+  </div>
+  
+  <div class="bottom-menu">
+    <div class="pull-left">
+      <label><%= title %></label>
+      <%= description || "YaleDancers Photo" %>
+    </div>
+    <div class="pull-right">
+      <label>Date Taken</label>
+      <%= datetaken %>
+    </div>
+  </div>
+</div>

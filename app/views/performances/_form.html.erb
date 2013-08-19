@@ -1,0 +1,17 @@
+<%= form_for @performance, html: {class: "table-inline"} do |f| %>
+  <%= f.hidden_field :show_id, value: @show.id %>
+  <table class="table">
+    <tr>
+      <td>Start:</td>
+      <td><%= f.datetime_select :start_at, prompt: true %></td>
+    </tr>
+    <tr>
+      <td>End:</td>
+      <td><%= f.datetime_select :end_at, prompt: true %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit %></td>
+    </tr>
+  </table>
+<% end %>

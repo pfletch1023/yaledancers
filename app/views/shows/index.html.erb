@@ -1,0 +1,17 @@
+<div class="admin-container">
+  <%= render "header" %>
+  
+  <h1>Shows</h1>
+  <table class="table table-striped">
+    <% @shows.each do |show| %>
+      <tr>
+        <td><%= image_tag show.photo.url(:small) %></td>
+        <td><%= show.name %></td>
+        <td><%= show.location %></td>
+        <td><%= show.student_price %></td>
+        <td><%= show.non_student_price %></td>
+        <td><%= link_to "Edit", edit_show_path(show) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

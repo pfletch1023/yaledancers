@@ -1,0 +1,6 @@
+<div class="gallery-row" data-id="<%= id %>" height="<%= height %>" style="height: <%= height %>px">
+  <% for(i = 0; i < photos.length; i++) { %>
+    <% photo = photos.at(i); %>
+    <img class="gallery-photo" height="<%= height %>" src="<%= photo.get('url_m') %>" data-id="<%= photo.get('id') %>" />
+  <% } %>
+</div>

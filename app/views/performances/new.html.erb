@@ -1,0 +1,7 @@
+<div class="admin-container">
+  <%= render "/shows/header" %>
+  
+  <h1>New Performance for <%= link_to @show.name, edit_show_path(@show) %></h1>
+  
+  <%= render "form" %>
+</div>

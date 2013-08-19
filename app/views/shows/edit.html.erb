@@ -1,0 +1,22 @@
+<div class="admin-container">
+  <%= render "header" %>
+  
+  <h1><%= @show.name %></h1>
+  
+  <%= render "form" %>
+  
+  <div class="table-inline">
+    <h3>Performances</h3>
+    <table class="table">
+      <% @show.performances.each do |perf| %>
+        <tr>
+          <td><%= perf.start_at.strftime("%D %r") %></td>
+          <td><%= perf.end_at.strftime("%D %r") %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td><%= link_to "Add Performance", "/shows/#{@show.id}/performances/new" %></td>
+      </tr>
+    </table>
+  </div>
+</div>

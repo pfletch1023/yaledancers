@@ -1,5 +1,9 @@
 class Member < ActiveRecord::Base
   
+  attr_accessible :name, :college, :year, :bio, :photo
+  
+  validates :name, presence: true
+
   has_attached_file :photo, 
     :styles => { 
       :medium => ["400x", :jpg], 
@@ -12,5 +16,15 @@ class Member < ActiveRecord::Base
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
       :bucket => ENV['S3_BUCKET_NAME']
     }
+  
+  def as_json(options = {})
+    super(only: [:name, :college, :year, :bio]).merge({
+      photo: {
+        small: self.photo.url(:small),
+        medium: self.photo.url(:medium),
+        original: self.photo.url(:original)
+      }
+    })
+  end
     
 end

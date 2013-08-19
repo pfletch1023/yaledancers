@@ -7,6 +7,6 @@ class YaleDancers.Models.Member extends Backbone.Model
     year: null
     bio: null
 
-class YaleDancers.Collections.MembersCollection extends Backbone.Collection
+class YaleDancers.Collections.Members extends Backbone.Collection
   model: YaleDancers.Models.Member
   url: '/members'

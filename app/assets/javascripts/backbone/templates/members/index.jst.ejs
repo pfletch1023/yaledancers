@@ -1,0 +1,15 @@
+<div class="members-panel" id="members-list">
+  <h1>Members</h1>
+  <ul>
+    <% for(i = 0; i < members.length; i++) { %>
+      <% var member = members.at(i); %>
+      <li>
+        <a class="member" data-id="<%= member.id %>">
+          <%= member.get('name') %><span>, <%= member.get('year') %></span>
+        </a>
+      </li>
+    <% } %>
+  </ul>
+</div>
+<div class="members-panel" id="members-show">
+</div>

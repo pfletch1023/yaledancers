@@ -1,7 +1,10 @@
 module YaleDancers::FlickrApiClient
     
-  def self.get_photos
-    flickr.people.getPublicPhotos(user_id: ENV['FLICKR_USER_ID'])
+  def self.get_photos(user_id = nil)
+    flickr.people.getPublicPhotos(
+      user_id: user_id || ENV['FLICKR_USER_ID'],
+      extras: "o_dims, description, url_s, url_m, url_o, date_taken"
+    )
   end
   
   def self.get_photo_url(photo_object)

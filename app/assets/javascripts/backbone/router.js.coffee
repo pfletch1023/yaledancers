@@ -1,7 +1,7 @@
 class YaleDancers.Router extends Backbone.Router
   
   initialize: (options) ->
-    @view = new YaleDancers.Views.Index()
+    @view = new YaleDancers.Views.Index
   
   routes:
     'members' : 'members'
@@ -12,16 +12,38 @@ class YaleDancers.Router extends Backbone.Router
   
   index: ->
     @view.closeNav()
-    @view.render()
+    if @showsCollection
+      @view.render(@showsCollection)
+    else
+      @showsCollection = new YaleDancers.Collections.Shows
+      @showsCollection.fetch success: (data) =>
+        console.log data
+        @index()
   
   members: ->
     @view.closeNav()
-  
+    if @membersCollection
+      @membersView = new YaleDancers.Views.Members unless @membersView
+      @membersView.render(@membersCollection)
+    else
+      @membersCollection = new YaleDancers.Collections.Members
+      @membersCollection.fetch success: (data) =>
+        @members()
+      
   about: ->
     @view.closeNav()
+    @view.renderAbout()
   
   gallery: ->
     @view.closeNav()
-  
+    if @photos
+      @galleryView = new YaleDancers.Views.Gallery unless @galleryView
+      @galleryView.render(@photos)
+    else
+      @photos = new YaleDancers.Collections.Photos
+      @photos.fetch success: (data) =>
+        @gallery()
+      
   contact: ->
     @view.closeNav()
+    @view.renderContactUs()

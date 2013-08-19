@@ -1,0 +1,19 @@
+// Admin style
+.admin-container {
+  // Use bootstrap only for admin container
+  @import "bootstrap";
+  @import "mixins";
+
+  // Admin variables
+  $width: 960px;
+  
+  width: $width;
+  margin: auto;
+  
+  .table-inline {
+    width: 50%;
+    float: left;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+}

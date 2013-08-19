@@ -1,0 +1,17 @@
+<div class="admin-container">
+  <%= render "header" %>
+  
+  <h1>Members</h1>
+  <table>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= image_tag member.photo.url(:small) %></td>
+        <td><%= member.name %></td>
+        <td><%= member.college %></td>
+        <td><%= member.year %></td>
+        <td><%= member.bio %></td>
+        <td><%= link_to "Edit", edit_member_path(member) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
