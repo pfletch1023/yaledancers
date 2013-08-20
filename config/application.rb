@@ -23,7 +23,6 @@ module YaleDancers
       ENV['FLICKR_USER_ID'] = credentials['FLICKR_USER_ID']
     end
     
-    p ENV['AWS_ACCESS_KEY_ID']
     FlickRaw.api_key = ENV['FLICKR_API_KEY']
     FlickRaw.shared_secret = ENV['FLICKR_SECRET']
   end
