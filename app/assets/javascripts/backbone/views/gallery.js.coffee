@@ -10,7 +10,6 @@ class YaleDancers.Views.Gallery extends Backbone.View
   content: "#gallery"
   
   render: (photos) ->
-    console.log photos
     @photos = photos
     $(@el).html @template()
     @addAll()

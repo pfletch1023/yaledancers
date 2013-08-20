@@ -35,7 +35,9 @@ class YaleDancers.Router extends Backbone.Router
   
   gallery: ->
     @view.closeNav()
+    $('body').addClass 'loading'
     if @photos
+      $('body').removeClass 'loading'
       @galleryView = new YaleDancers.Views.Gallery unless @galleryView
       @galleryView.render(@photos)
     else

@@ -19,6 +19,16 @@ body {
   background: $background-color;
 }
 
+.loading {  
+  .container {
+    opacity: 0;
+  }
+  
+  .loader {
+    display: block;
+  }
+}
+
 a {
   color: black;
   text-decoration: none;
@@ -174,12 +184,26 @@ a {
   }
 }
 
-.container {
-  position: absolute;
-  top: 0;
+.loader {
+  display: none;
+  color: white;
+  font-size: 50px;
+  @include G-XLight;
+  text-align: center;
+  position: fixed;
+  top: 40%;
+}
+
+.container,
+.loader {
   left: $nav-width;
   @include calc(width, "100% - #{$nav-width}");
   min-width: 500px;
+}
+
+.container {
+  top: 0;
+  position: absolute;
 }
 
 .content {
