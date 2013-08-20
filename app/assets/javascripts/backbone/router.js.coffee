@@ -17,7 +17,6 @@ class YaleDancers.Router extends Backbone.Router
     else
       @showsCollection = new YaleDancers.Collections.Shows
       @showsCollection.fetch success: (data) =>
-        console.log data
         @index()
   
   members: ->
@@ -47,3 +46,4 @@ class YaleDancers.Router extends Backbone.Router
   contact: ->
     @view.closeNav()
     @view.renderContactUs()
+    
