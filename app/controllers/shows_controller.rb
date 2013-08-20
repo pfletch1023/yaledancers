@@ -3,8 +3,13 @@ class ShowsController < ApplicationController
   respond_to :html, :json
   
   def index
-    @shows = Show.order("updated_at DESC").first(3)
+    @shows = Show.order("updated_at DESC")
     respond_with @shows
+  end
+  
+  def show
+    @show = Show.find(params[:id])
+    respond_with @show
   end
   
   def new

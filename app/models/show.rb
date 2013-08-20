@@ -21,7 +21,7 @@ class Show < ActiveRecord::Base
     }
   
   def as_json(options = {})
-    super(only: [:name, :location, :student_price, :non_student_price]).merge({
+    super(only: [:id, :name, :location, :student_price, :non_student_price]).merge({
       photo: {
         small: self.photo.url(:small),
         medium: self.photo.url(:medium),

@@ -4,6 +4,7 @@ class YaleDancers.Router extends Backbone.Router
     @view = new YaleDancers.Views.Index
   
   routes:
+    'shows/:id' : 'show'
     'members' : 'members'
     'about' : 'about'
     'gallery' : 'gallery'
@@ -19,6 +20,18 @@ class YaleDancers.Router extends Backbone.Router
       @showsCollection.fetch success: (data) =>
         @index()
   
+  show: (id) ->
+    @view.closeNav()
+    if @showsCollection
+      @showView = new YaleDancers.Views.Show unless @showView
+      @showView.render(@showsCollection.get(id))
+    else
+      show = new YaleDancers.Models.Show
+      show.url = "/shows/#{id}"
+      show.fetch success: (data) =>
+        @showView = new YaleDancers.Views.Show unless @showView
+        @showView.render(show)
+    
   members: ->
     @view.closeNav()
     if @membersCollection

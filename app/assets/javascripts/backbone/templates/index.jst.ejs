@@ -47,11 +47,12 @@
   
   <% for(i = 1; i < shows.length; i++ ) { %>
     <% show = shows.at(i); %>
-    <div class="previous-show">
+    <% console.log(show); %>
+    <a class="previous-show" href="#shows/<%= show.get('id') %>">
       <div class="previous-show-image" style="background-image: url('<%= show.get('photo').medium %>')"></div>
       <div class="previous-show-details">
         <div class="previous-show-name"><%= show.get("name") %></div>
       </div>
-    </div>
+    </a>
   <% } %>
 </div>

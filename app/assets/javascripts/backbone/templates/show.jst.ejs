@@ -1,0 +1,34 @@
+<div class="featured-show">
+  <div class="featured-image" id="show-image">
+    <div class="featured-image-bg" style="background-image: url('<%= show.get("photo").large %>')"></div>
+    <div class="featured-details">
+      <div class="name"><%= show.get("name") %></div>
+    </div>
+  </div>
+  <div class="featured-info light">
+    <div class="inline-block">
+      <div class="info">
+        <span>Location</span>
+        <%= show.get("location") %>
+      </div>
+      <div class="info">
+        <span>Student Price</span>
+        <%= show.get("student_price") %>
+      </div>
+      <div class="info">
+        <span>Non-student price</span>
+        <%= show.get("non_student_price") %>
+      </div>
+    </div>
+    <div class="inline-block performances">
+      <div class="info">
+        <span>Performances</span>
+        <% for(j = 0; j < show.get("performances").length; j++) { %>
+          <div class="performance">
+            <%= moment(show.get("performances")[j].start_at).format("dddd, MMMM Do YYYY, h:mm a") %>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
