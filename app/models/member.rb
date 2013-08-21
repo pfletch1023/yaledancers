@@ -18,7 +18,7 @@ class Member < ActiveRecord::Base
     }
   
   def as_json(options = {})
-    super(only: [:name, :college, :year, :bio]).merge({
+    super(only: [:id, :name, :college, :year, :bio]).merge({
       photo: {
         small: self.photo.url(:small),
         medium: self.photo.url(:medium),

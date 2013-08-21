@@ -8,16 +8,27 @@ class YaleDancers.Views.Members extends Backbone.View
   el: ".container"
   content: "#members-show"
   
+  initialize: ->
+    resize = _.debounce(@resize, 100)
+    $(window).on("resize", resize)
+  
+  resize: =>
+    @render(@members)
+    
   render: (members) ->
     @members = members
-    $(@el).html @template(members: @members)
+    num = Math.floor($(@el).width() / 250)
+    $(@el).html @template(members: @members, numColumns: num)
   
   events: 
     "click .member" : "showMember"
   
   showMember: (event) ->
-    id = $(event.target).closest("a").data("id")
-    member = @members.get(id)
-    $(@content).css("background-image", "url(#{member.get('original_url')})")
-    $(@content).html @memberTemplate(member.toJSON())
-    
+    $target = $(event.target).closest(".member")
+    if $target.hasClass "open"
+      $target.removeClass "open"
+      $(".member-bio", $target).slideUp(150)
+    else
+      $target.addClass "open"
+      $(".member-bio", $target).slideDown(150)
+      

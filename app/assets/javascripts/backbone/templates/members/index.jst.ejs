@@ -1,15 +1,26 @@
-<div class="members-panel" id="members-list">
-  <h1>Members</h1>
-  <ul>
-    <% for(i = 0; i < members.length; i++) { %>
-      <% var member = members.at(i); %>
-      <li>
-        <a class="member" data-id="<%= member.id %>">
-          <%= member.get('name') %><span>, <%= member.get('year') %></span>
-        </a>
-      </li>
-    <% } %>
-  </ul>
-</div>
-<div class="members-panel" id="members-show">
+<div class="members" id="members-list">
+  <h1 class="centered">Members</h1>
+  <% for(col = 0; col < numColumns; col++) { %>
+    <div class="members-column" style="width: <%= 100 / numColumns %>%">
+      <% for(i = col; i < members.length; i += numColumns) { %>
+        <% var member = members.at(i); %>
+        <div class="member" data-id="<%= member.id %>">
+          <img src="<%= member.get('photo').medium %>"/>
+          <div class="member-name">
+            <%= member.get('name') %>
+          </div>
+          <div class="member-info">
+            <%= member.get('college') %>, <span><%= member.get('year') %></span>
+          </div>
+          <div class="member-bio">
+            <% if (member.get('bio')) { %>
+              <%= member.get('bio') %>
+            <% } else { %>
+              Bio coming soon...
+            <% } %>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  <% } %>
 </div>

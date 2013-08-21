@@ -500,115 +500,83 @@ a {
   }
 }
 
-// Member
-$members-list-width: 30%;
-
-.members-panel {
-  position: fixed;
-  top: 0;
-  height: 100%;
-}
+// Members
 
 #members-list {
-  width: $members-list-width;
-  min-width: 300px;
-  background: #eee;
-  z-index: 1;
-  left: $nav-width;
-  box-sizing: border-box;
+  padding-left: 30px;
   
   h1 {
-    height: $nav-width;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0 30px;
-    background: #dadada;
-    line-height: $nav-width;
-    @include calc(font-size, "#{$nav-width}/2.3");
     @include G-Light;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px 30px;
-  }
-  
-  li {
+    @include calc(font-size, "#{$nav-width}/2.3");
+    box-sizing: border-box;
+    border-bottom: 2px solid $background-color;
+    text-decoration: none;
+    height: $nav-width;
+    line-height: $nav-width;
+    display: block;
+    text-align: left;
     margin: 0;
-    padding: 10px 0;
+  }
+  
+  .members-column {
+    float: left;
+    box-sizing: border-box;
+    padding-right: 30px;
   }
   
   .member {
+    background: white;
+    margin-bottom: 30px;
+    border: 1px solid #dadada;
     cursor: pointer;
-    font-size: 20px;
-    
-    span {
-      @include G-Light;
-    }
     
     &:hover {
-      border-bottom: 1px dotted #333;
+      img {
+        opacity: 0.7;
+      }
+      
+      .member-name, 
+      .member-info {
+        color: $purple;
+      }
+    }
+    
+    img {
+      width: 100%;
+      @include transition(0.15s);
+    }
+    
+    .member-name,
+    .member-info {
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 16px;
+      line-height: 20px;
+      @include transition(0.15s);
+    }
+    
+    .member-name {
+      text-transform: uppercase;
+      @include G-Bold;
+      padding-bottom: 5px;
+    }
+    
+    .member-info {
+      @include G-Light;
+      padding-top: 0px;
+      font-style: italic;
+    }
+    
+    .member-bio {
+      display: none;
+      border-top: 1px solid #dadada;
+      padding: 10px;
+      @include G-Light;
+      font-size: 13px;
+      line-height: 20px;
+      padding-bottom: 20px;
     }
   }
-}
-
-#members-show {
-  @include calc(width, "100% - #{$members-list-width} - #{$nav-width}");
-  min-width: 500px;
-  @include calc(left, "#{$nav-width} + #{$members-list-width}");
-  background-color: #333;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  z-index: 0;
-}
-
-.member-container {
-  width: 100%;
-  height: 100%;
-  background: rgba(200, 200, 200, 0.8); /* Old browsers */
-  background: -moz-linear-gradient(left, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0,0,0,0.1)), color-stop(40%, rgba(0,0,0,0.8)), color-stop(100%, rgba(0,0,0,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,1) 100%); /* IE10+ */
-  background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,1) 100%); /* W3C */
-  padding: 0 60px;
-  text-align: right;
-  color: white;
-  box-sizing: border-box;
-  @include G-Light;
-  overflow: scroll;
-  padding-bottom: 50px;
-}
-
-.member-text {
-  width: 50%;
-  min-width: 400px;
-  position: absolute;
-  right: 50px;
-}
-
-.member-name {
-  box-sizing: border-box;
-  padding: 20px 0;
-  margin: 0;
-  line-height: $nav-width - 40px;
-  @include calc(font-size, "#{$nav-width}/2.3");
-  border-bottom: 1px solid white;
-  @include G-Light;
-}
-
-.member-subtitle {
-  padding: 20px 0;
-  font-size: 20px;
-  color: #eee;
-  font-style: italic;
-}
-
-.member-bio {
-  @include G-XLight;
-  line-height: 22px;
 }
 
 // About
