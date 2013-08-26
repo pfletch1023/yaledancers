@@ -398,105 +398,72 @@ a {
 
 // Gallery
 #gallery {
+  padding: 20px 0px;
   
   .gallery-row {
     min-height: 150px;
     margin-bottom: 8px;
-  }
-  
-  img {
-    margin: 0 4px;
-    display: block;
-    float: left;
-    cursor: pointer;
-    @include transition(opacity 0.15s);
+    padding: 0 20px;
     
-    &:hover {
-      opacity: 0.85;
-    }
-  }
-}
+    img {
+      margin: 0 4px;
+      display: block;
+      float: left;
+      cursor: pointer;
+      @include transition(opacity 0.15s);
 
-#popover {
-  position: fixed;
-  top: 0;
-  left: $nav-width;
-  height: 0;
-  width: 0;
-  background: rgba(0,0,0,0);
-  @include transition(opacity 0.5s);
-  text-align: center;
-  
-  &.open {
-    @include calc(width, "100% - #{$nav-width}");
-    height: 100%;
-    background: rgba(0,0,0,0.9);
-  }
-  
-  img {
-    height: 100%;
-  }
-  
-  .medium-photo,
-  .large-photo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .medium-photo {
-    z-index: 0;
-  }
-  
-  .large-photo {
-    z-index: 1;
-  }
-  
-  .close-popover {
-    border: 1px solid white;
-    padding: 5px 8px;
-    cursor: pointer;
-    
-    &:hover {
-      background: black;
+      &:hover {
+        opacity: 0.85;
+      }
     }
   }
   
-  .bottom-menu,
-  .top-menu {
-    position: absolute;
-    color: white;
-    left: 10%;
-    width: 80%;
-    @include G-XLight;
-    font-size: 18px;
-    z-index: 2;
-  }
-  
-  .top-menu {
-    top: 0;
-    padding-top: 30px;
-  }
-  
-  .bottom-menu {
-    bottom: 0;
-    padding-bottom: 30px;
-  }
-  
-  label {
-    display: block;
-    font-size: 13px;
-    @include G-Regular;
-    border-bottom: 1px solid $purple;
-    margin-bottom: 5px;
-    text-align: left;
-    padding-bottom: 5px;
-  }
-  
-  .pull-right label {
-    text-align: right;
+  .gallery-row-show {
+    display: none;
+    width: 100%;
+    background: black;
+    margin-bottom: 10px;
+    
+    .gallery-photo-focus {
+      position: relative;
+      height: 100%;
+    }
+    
+    .medium-photo,
+    .large-photo {
+      @include calc(width, "100% - 100px");
+      margin: 50px;
+      position: absolute;
+      top: 0;
+      
+      img {
+        width: 100%;
+      }
+    }
+    
+    .bottom-menu {
+      position: absolute;
+      bottom: 10px;
+      @include G-XLight;
+      text-align: center;
+      width: 100%;
+      text-transform: uppercase;
+      
+      i {
+        font-size: 20px;
+      }
+      
+      a {
+        color: #dadada;
+        text-decoration: none;
+        border: 0;
+        cursor: pointer;
+        
+        &:hover {
+          color: white;
+        }
+      }
+    }
   }
 }
 

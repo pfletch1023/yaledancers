@@ -29,7 +29,7 @@ class YaleDancers.Views.Gallery extends Backbone.View
     for photo in @photos.models
       if currentRow.isEmpty()
         currentRow.set photos: new YaleDancers.Collections.Photos(photo)
-      else if currentRow.canFitPhoto(photo, $(@content).width())
+      else if currentRow.canFitPhoto(photo, $(@content).width() - 40)
         currentRow.get("photos").add photo
       else
         newIndex = currentRow.id++
@@ -40,17 +40,20 @@ class YaleDancers.Views.Gallery extends Backbone.View
 
   events: 
     "click .gallery-photo" : "openPhoto"
-    "click .close-popover" : "closePhoto"
+    "click .close-photo" : "closePhoto"
   
   openPhoto: (event) ->
     id = $(event.target).data("id")
-    $("#popover").addClass "open"
-    #console.log @photos.get(id)
-    $("#popover").html @photoTemplate(@photos.get(id).toJSON())
+    rowId = $(event.target).closest(".gallery-row").data("id")
+    $(".gallery-row-show").hide()
+    $galleryRow = $(".gallery-row-show[data-id='#{rowId}']")
+    photoHeight = ($(".gallery-row-show").width() / @photos.get(id).get("width_s")) * @photos.get(id).get("height_s")
+    $galleryRow.height(photoHeight + 40 + "px")
+    $galleryRow.slideDown(300)
+    $galleryRow.html @photoTemplate(@photos.get(id).toJSON())
     $(".large-photo img").load ->
       $(".large-photo").fadeIn(200)
   
   closePhoto: (event) ->
-    $("#popover").removeClass "open"
-    $("#popover").html ""
+    $(".gallery-row-show").slideUp(200)
     
